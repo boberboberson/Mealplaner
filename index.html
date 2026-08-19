@@ -3,9 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Herbi</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>Herbi — Meal Planner</title>
+<meta name="apple-mobile-web-app-title" content="Herbi">
+<meta name="theme-color" content="#3E5C3A">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap');
 
@@ -21,493 +22,101 @@
   --accent: #B3541E;
   --warn: #A33A2C;
   --warn-tint: #F6E1DD;
-  --radius: 12px;
-  --shadow: 0 2px 12px rgba(0,0,0,0.08);
-  --safe-bottom: env(safe-area-inset-bottom, 16px);
+  --radius: 10px;
 }
 * { box-sizing: border-box; }
 body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
+  margin: 0; background: var(--bg); color: var(--text);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 17px;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  padding-bottom: calc(40px + var(--safe-bottom));
-  min-height: 100vh;
+  font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased;
+  padding-bottom: 40px;
 }
-h1, h2, h3 { 
-  font-family: 'Fraunces', Georgia, serif; 
-  font-weight: 600; 
-  margin: 0 0 .4em; 
-  color: var(--primary-dark); 
-}
-h1 { font-size: 1.6rem; letter-spacing: -0.01em; }
-h2 { font-size: 1.2rem; }
-h3 { font-size: 1.05rem; }
-
-/* Header */
+h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; margin: 0 0 .4em; color: var(--primary-dark); }
+h1 { font-size: 1.5rem; }
+h2 { font-size: 1.15rem; }
+h3 { font-size: 1rem; }
 header.top {
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-  padding: 14px 20px 10px;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: var(--surface); border-bottom: 1px solid var(--border);
+  padding: 12px 16px; position: sticky; top: 0; z-index: 10;
 }
-.brand {
-  font-family: 'Fraunces', serif;
-  font-weight: 700;
-  font-size: 1.4rem;
-  color: var(--primary-dark);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 10px;
-}
-.brand span {
-  font-size: .7rem;
-  font-weight: 400;
-  color: var(--text-muted);
-  background: var(--bg);
-  padding: 2px 10px;
-  border-radius: 999px;
-}
-nav.tabs {
-  display: flex;
-  gap: 6px;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  padding-bottom: 2px;
-}
+.brand { font-family: 'Fraunces', serif; font-weight: 700; font-size: 1.25rem; color: var(--primary-dark); display: flex; align-items: center; gap: 6px; margin-bottom: 8px; }
+nav.tabs { display: flex; gap: 4px; overflow-x: auto; }
 nav.tabs button {
-  background: none;
-  border: none;
-  color: var(--text-muted);
-  padding: 10px 16px;
-  border-radius: 999px;
-  font-weight: 600;
-  font-size: .92rem;
-  cursor: pointer;
-  font-family: inherit;
-  white-space: nowrap;
-  transition: all 0.2s;
-  touch-action: manipulation;
+  background: none; border: none; color: var(--text-muted); padding: 8px 12px;
+  border-radius: 999px; font-weight: 500; font-size: .88rem; cursor: pointer;
+  font-family: inherit; white-space: nowrap;
 }
-nav.tabs button.active {
-  background: var(--primary);
-  color: #fff;
-}
-
-/* Main Content */
-main {
-  max-width: 780px;
-  margin: 0 auto;
-  padding: 16px 16px calc(16px + var(--safe-bottom));
-}
-.card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 16px;
-  margin-bottom: 14px;
-  box-shadow: var(--shadow);
-}
-.toolbar {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 14px;
-}
-.divider {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 20px 0 12px;
-  color: var(--text-muted);
-  font-size: .78rem;
-  text-transform: uppercase;
-  letter-spacing: .05em;
-  font-weight: 600;
-}
-.divider::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: var(--border);
-}
-
-/* Form Elements */
-label {
-  display: block;
-  font-size: .8rem;
-  color: var(--text-muted);
-  margin-bottom: 4px;
-  font-weight: 500;
-}
+nav.tabs button.active { background: var(--primary); color: #fff; }
+main { max-width: 720px; margin: 0 auto; padding: 16px; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; margin-bottom: 12px; }
+.toolbar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+.divider { display: flex; align-items: center; gap: 8px; margin: 18px 0 10px; color: var(--text-muted); font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; }
+.divider::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+label { display: block; font-size: .8rem; color: var(--text-muted); margin-bottom: 3px; }
 input[type=text], input[type=number], input[type=password], input[type=date], select, textarea {
-  width: 100%;
-  padding: 10px 12px;
-  border: 1.5px solid var(--border);
-  border-radius: 10px;
-  background: var(--surface);
-  font-family: inherit;
-  font-size: .95rem;
-  color: var(--text);
-  transition: all 0.2s;
-  -webkit-appearance: none;
-  appearance: none;
+  width: 100%; padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px;
+  background: var(--surface); font-family: inherit; font-size: .95rem; color: var(--text);
 }
-input:focus, select:focus, textarea:focus {
-  outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(62, 92, 58, 0.1);
-}
-.field { margin-bottom: 12px; }
-.field-row {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-.field-row > .field { flex: 1; min-width: 100px; }
-
-/* Buttons */
+input:focus, select:focus, textarea:focus { outline: 2px solid var(--primary); outline-offset: 1px; border-color: var(--primary); }
+.field { margin-bottom: 10px; }
+.field-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.field-row > .field { flex: 1; min-width: 90px; }
 button, .btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  background: var(--primary);
-  color: #fff;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 10px;
-  font-size: .9rem;
-  font-weight: 600;
-  cursor: pointer;
-  font-family: inherit;
-  transition: all 0.2s;
-  touch-action: manipulation;
-  min-height: 44px;
-  min-width: 44px;
+  display: inline-flex; align-items: center; gap: 5px; background: var(--primary); color: #fff;
+  border: none; padding: 9px 14px; border-radius: 8px; font-size: .88rem; font-weight: 600;
+  cursor: pointer; font-family: inherit;
 }
-button:hover, .btn:hover {
-  background: var(--primary-dark);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow);
-}
-button:active { transform: scale(0.97); }
-.btn-secondary {
-  background: var(--surface);
-  color: var(--text);
-  border: 1.5px solid var(--border);
-}
-.btn-secondary:hover {
-  background: var(--primary-tint);
-  border-color: var(--primary);
-}
+button:hover { background: var(--primary-dark); }
+.btn-secondary { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
+.btn-secondary:hover { background: var(--primary-tint); }
 .btn-accent { background: var(--accent); }
-.btn-accent:hover { background: #8A4418; }
-.btn-danger {
-  background: var(--surface);
-  color: var(--warn);
-  border: 1.5px solid var(--warn-tint);
-}
-.btn-danger:hover { background: var(--warn-tint); }
-.btn-small {
-  padding: 6px 12px;
-  font-size: .82rem;
-  min-height: 34px;
-}
-.btn-success { background: #2D6A4F; }
-.btn-success:hover { background: #1E4A35; }
-
-/* Tables & Lists */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: .9rem;
-}
-th {
-  text-align: left;
-  font-size: .72rem;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  border-bottom: 2px solid var(--border);
-  padding: 8px 6px;
-  font-weight: 600;
-  letter-spacing: .03em;
-}
-td {
-  padding: 10px 6px;
-  border-bottom: 1px solid var(--border);
-  vertical-align: middle;
-}
-.tag-pill {
-  display: inline-block;
-  background: var(--primary-tint);
-  color: var(--primary-dark);
-  padding: 2px 10px;
-  border-radius: 999px;
-  font-size: .72rem;
-  font-weight: 500;
-  margin-right: 3px;
-}
-
-/* Ingredient Rows */
-.ing-row {
-  display: grid;
-  grid-template-columns: 1.6fr .8fr .7fr 1fr .8fr auto;
-  gap: 6px;
-  margin-bottom: 6px;
-  align-items: center;
-}
-.ing-header {
-  display: grid;
-  grid-template-columns: 1.6fr .8fr .7fr 1fr .8fr auto;
-  gap: 6px;
-  font-size: .7rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  margin-bottom: 4px;
-  text-transform: uppercase;
-  letter-spacing: .03em;
-}
-.remove-row {
-  background: transparent;
-  color: var(--warn);
-  border: none;
-  font-size: 1.2rem;
-  cursor: pointer;
-  padding: 4px 8px;
-  touch-action: manipulation;
-}
-
-/* Equipment Grid */
-.equipment-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-  gap: 8px 12px;
-  margin: 8px 0 16px;
-}
-.equipment-grid label {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--text);
-  font-size: .88rem;
-  font-weight: 400;
-  margin: 0;
-  cursor: pointer;
-}
-.equipment-grid input[type=checkbox] {
-  width: 18px;
-  height: 18px;
-  accent-color: var(--primary);
-  cursor: pointer;
-}
-
-/* Week Planner */
-.week-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 16px;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-.week-days {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.day-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-top: 3px solid var(--primary);
-  border-radius: var(--radius);
-  padding: 14px;
-}
-.day-card h3 {
-  font-size: .95rem;
-  margin-bottom: 8px;
-}
-.plan-item {
-  background: var(--primary-tint);
-  border-radius: 8px;
-  padding: 8px 12px;
-  margin-bottom: 6px;
-  font-size: .88rem;
-  display: flex;
-  justify-content: space-between;
-  gap: 8px;
-  align-items: flex-start;
-}
-.plan-item.warn {
-  background: var(--warn-tint);
-}
-.warn-note {
-  display: block;
-  font-size: .7rem;
-  color: var(--warn);
-  margin-top: 2px;
-}
-.remove-x {
-  background: none;
-  border: none;
-  color: var(--text-muted);
-  cursor: pointer;
-  font-size: 1.1rem;
-  padding: 0 4px;
-  touch-action: manipulation;
-}
-.budget-banner {
-  padding: 12px 16px;
-  border-radius: 10px;
-  margin-bottom: 14px;
-  font-weight: 600;
-  font-size: .92rem;
-}
-.budget-ok {
-  background: var(--primary-tint);
-  color: var(--primary-dark);
-}
-.budget-over {
-  background: var(--warn-tint);
-  color: var(--warn);
-}
-.budget-neutral {
-  background: var(--border);
-  color: var(--text);
-}
-
-/* Shopping List */
-.shopping-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 4px;
-  border-bottom: 1px solid var(--border);
-}
-.shopping-item:last-child { border-bottom: none; }
-.shopping-item input[type=checkbox] {
-  width: 22px;
-  height: 22px;
-  accent-color: var(--primary);
-  flex-shrink: 0;
-  cursor: pointer;
-}
-.shopping-item.checked label {
-  text-decoration: line-through;
-  color: var(--text-muted);
-}
-.item-meta {
-  color: var(--text-muted);
-  font-size: .82rem;
-}
-.order-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.order-list li {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 8px 12px;
-  margin-bottom: 6px;
-}
-.status-pill {
-  display: inline-block;
-  padding: 2px 10px;
-  border-radius: 999px;
-  font-size: .78rem;
-  font-weight: 500;
-}
-.status-pill.set {
-  background: var(--primary-tint);
-  color: var(--primary-dark);
-}
-.status-pill.unset {
-  background: var(--warn-tint);
-  color: var(--warn);
-}
-.empty-state {
-  color: var(--text-muted);
-  padding: 32px 0;
-  text-align: center;
-  font-size: 1.05rem;
-}
-.toast {
-  position: fixed;
-  bottom: calc(20px + var(--safe-bottom));
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--primary-dark);
-  color: #fff;
-  padding: 12px 24px;
-  border-radius: 999px;
-  font-size: .9rem;
-  font-weight: 500;
-  z-index: 100;
-  box-shadow: 0 4px 20px rgba(0,0,0,.25);
-  animation: slideUp 0.3s ease;
-  max-width: 90%;
-  text-align: center;
-}
-@keyframes slideUp {
-  from { opacity:0; transform:translateX(-50%) translateY(20px); }
-  to { opacity:1; transform:translateX(-50%) translateY(0); }
-}
-.ai-badge {
-  background: linear-gradient(135deg, #6C5CE7, #A29BFE);
-  color: white;
-  padding: 2px 12px;
-  border-radius: 999px;
-  font-size: .7rem;
-  font-weight: 600;
-  margin-left: 6px;
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-  body { font-size: 16px; }
-  .ing-row, .ing-header {
-    grid-template-columns: 1.4fr .7fr .5fr .9fr .7fr auto;
-    gap: 4px;
-  }
-  .brand { font-size: 1.2rem; }
-  .equipment-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
-  button, .btn { padding: 8px 14px; font-size: .85rem; min-height: 40px; }
-  h1 { font-size: 1.3rem; }
-  .toolbar { gap: 6px; }
-}
+.btn-danger { background: var(--surface); color: var(--warn); border: 1px solid var(--warn-tint); }
+.btn-small { padding: 5px 9px; font-size: .78rem; }
+table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+th { text-align: left; font-size: .72rem; text-transform: uppercase; color: var(--text-muted); border-bottom: 1px solid var(--border); padding: 6px; }
+td { padding: 8px 6px; border-bottom: 1px solid var(--border); }
+.tag-pill { display: inline-block; background: var(--primary-tint); color: var(--primary-dark); padding: 1px 7px; border-radius: 999px; font-size: .72rem; margin-right: 3px; }
+.ing-row { display: grid; grid-template-columns: 1.6fr .8fr .7fr 1fr .8fr auto; gap: 4px; margin-bottom: 5px; align-items: center; }
+.ing-header { display: grid; grid-template-columns: 1.6fr .8fr .7fr 1fr .8fr auto; gap: 4px; font-size: .68rem; color: var(--text-muted); margin-bottom: 3px; }
+.remove-row { background: transparent; color: var(--warn); border: none; font-size: 1rem; cursor: pointer; padding: 2px 6px; }
+.equipment-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 5px 8px; margin: 6px 0 14px; }
+.equipment-grid label { display: flex; align-items: center; gap: 5px; color: var(--text); font-size: .85rem; margin: 0; }
+.equipment-grid input { width: auto; }
+.week-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; gap: 8px; }
+.week-days { display: flex; flex-direction: column; gap: 10px; }
+.day-card { background: var(--surface); border: 1px solid var(--border); border-top: 3px solid var(--primary); border-radius: var(--radius); padding: 10px; }
+.day-card h3 { font-size: .92rem; margin-bottom: 6px; }
+.plan-item { background: var(--primary-tint); border-radius: 6px; padding: 6px 8px; margin-bottom: 5px; font-size: .85rem; display: flex; justify-content: space-between; gap: 6px; align-items: flex-start; }
+.plan-item.warn { background: var(--warn-tint); }
+.warn-note { display: block; font-size: .7rem; color: var(--warn); margin-top: 2px; }
+.remove-x { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: .9rem; padding: 0; }
+.budget-banner { padding: 9px 12px; border-radius: 8px; margin-bottom: 12px; font-weight: 600; font-size: .88rem; }
+.budget-ok { background: var(--primary-tint); color: var(--primary-dark); }
+.budget-over { background: var(--warn-tint); color: var(--warn); }
+.budget-neutral { background: var(--border); color: var(--text); }
+.shopping-item { display: flex; align-items: center; gap: 8px; padding: 5px 2px; }
+.shopping-item input[type=checkbox] { width: 18px; height: 18px; accent-color: var(--primary); flex-shrink:0; }
+.shopping-item.checked label { text-decoration: line-through; color: var(--text-muted); }
+.item-meta { color: var(--text-muted); font-size: .82rem; }
+.order-list { list-style: none; margin: 0; padding: 0; }
+.order-list li { display: flex; align-items: center; justify-content: space-between; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 7px 10px; margin-bottom: 5px; }
+.status-pill { display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: .78rem; }
+.status-pill.set { background: var(--primary-tint); color: var(--primary-dark); }
+.status-pill.unset { background: var(--warn-tint); color: var(--warn); }
+.empty-state { color: var(--text-muted); padding: 24px 0; text-align: center; }
+.toast { position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%); background: var(--primary-dark); color: #fff; padding: 10px 18px; border-radius: 999px; font-size: .85rem; z-index: 100; box-shadow: 0 4px 14px rgba(0,0,0,.2); }
 </style>
 </head>
 <body>
 
 <header class="top">
-  <div class="brand">
-    🌿 Herbi
-    <span>iPad</span>
-  </div>
+  <div class="brand">🌿 Herbi</div>
   <nav class="tabs" id="tabs"></nav>
 </header>
 <main id="app"></main>
 
 <script>
-/* ============================================================
-   HERBI — VOLLSTÄNDIGE IPAD-APP MIT DEEPSEEK API
-   ============================================================ */
-
-/* ---------------- Konfiguration ---------------- */
+/* ---------------- State & Storage ---------------- */
 
 const CATEGORIES = ["produce","bakery","dairy","meat","frozen","pantry","spices","other"];
 const CATEGORY_LABELS = {
@@ -518,18 +127,10 @@ const CATEGORY_LABELS = {
 const DEFAULT_APPLIANCES = ["Backofen","Herd","Mikrowelle","Airfryer","Standmixer","Stabmixer","Toaster","Wasserkocher","Reiskocher","Slow Cooker","Sandwichmaker","Grill"];
 const WEEKDAYS = ["Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag","Sonntag"];
 
-const CATEGORY_KEYWORDS = {
-  produce: ["apfel", "birne", "banane", "orange", "zitrone", "tomate", "gurke", "salat", "karotte", "kartoffel", "zwiebel", "knoblauch", "paprika", "aubergine", "zucchini", "kürbis", "pilz", "avocado", "beere", "traube", "pfirsich", "nectarine", "kiwi", "mango", "ananas", "melone", "spargel", "bohnen", "erbsen", "mais", "brokkoli", "blumenkohl", "kohl", "spinat", "mangold", "rübe", "sellerie", "lauch"],
-  dairy: ["milch", "käse", "joghurt", "quark", "sahne", "butter", "schmand", "crème", "frischkäse", "mozzarella", "parmesan", "gouda", "emmentaler", "camembert", "brie", "feta", "ricotta", "buttermilch", "kefir"],
-  meat: ["huhn", "hähnchen", "pute", "rind", "schwein", "lamm", "kalb", "wurst", "schinken", "speck", "salami", "fisch", "lachs", "forelle", "thunfisch", "garnelen", "scampi", "muscheln", "steak", "braten", "hackfleisch"],
-  bakery: ["brot", "brötchen", "toast", "baguette", "ciabatta", "kruste", "brezel", "croissant", "brat", "pizza", "tortilla", "wrap", "biskuit", "kuchen", "torte", "gebäck", "kekse"],
-  frozen: ["tiefkühl", "tk-", "frost", "eis", "gefroren", "pommes", "fischstäbchen", "pizza tk", "gemüse tk", "obst tk"],
-  pantry: ["reis", "nudel", "mehl", "zucker", "salz", "pfeffer", "öl", "essig", "soße", "brühe", "suppe", "konserve", "dose", "glas", "bohnen dose", "mais dose", "thon", "sardine", "ketchup", "senf", "majo", "honig", "marmelade", "schokolade", "kakao", "kaffee", "tee", "müsli", "haferflocke", "keks", "snack"],
-  spices: ["gewürz", "kräuter", "curry", "paprika", "oregano", "thymian", "rosmarin", "basilikum", "koriander", "kreuzkümmel", "zimt", "vanille", "nelke", "kardamom", "muskat", "piment", "chili", "knoblauchpulver", "zwiebelpulver", "bratgewürz"]
-};
-
+// Grobe, typische Gang-Reihenfolgen als Startvorlage — reale Filialen weichen ab,
+// deshalb bleibt die Reihenfolge danach frei per ▲/▼ anpassbar.
 const SUPERMARKET_PRESETS = {
-  "": { label: "Kein Stammsupermarkt", order: null },
+  "": { label: "Kein Stammsupermarkt (eigene Reihenfolge)", order: null },
   rewe: { label: "Rewe", order: ["produce","bakery","dairy","meat","frozen","pantry","spices","other"] },
   edeka: { label: "Edeka", order: ["produce","bakery","dairy","meat","pantry","frozen","spices","other"] },
   aldi: { label: "Aldi", order: ["bakery","produce","dairy","meat","pantry","frozen","spices","other"] },
@@ -538,23 +139,12 @@ const SUPERMARKET_PRESETS = {
   netto: { label: "Netto", order: ["bakery","produce","dairy","meat","frozen","pantry","spices","other"] },
 };
 
-/* ---------------- State ---------------- */
-
 var state = {
   recipes: [],
   plan: [],
   settings: {
-    ownedAppliances: [],
-    customAppliances: [],
-    weeklyBudget: null,
-    categoryOrder: [...CATEGORIES],
-    supermarketName: "",
-    selectedSupermarket: "",
-    checked: {},
-    apiKey: "",
-    maxTokens: 4096,
-    temperature: 0.7,
-    provider: "deepseek" // deepseek | anthropic
+    ownedAppliances: [], customAppliances: [], weeklyBudget: null,
+    categoryOrder: [...CATEGORIES], supermarketName: "", selectedSupermarket: "", checked: {}
   },
   activeTab: "planner",
   plannerWeekStart: null,
@@ -562,73 +152,42 @@ var state = {
   shoppingEnd: null,
   editingRecipeId: null,
   recipeDraft: null,
-  recipeQuery: "",
 };
 
 function uid() { return 'id-' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8); }
 
-/* ---------------- Storage ---------------- */
-
-if (typeof window.storage === 'undefined') {
-  window.storage = {
-    get: async function(key) {
-      try {
-        const val = localStorage.getItem(key);
-        return { value: val };
-      } catch { return { value: null }; }
-    },
-    set: async function(key, value) {
-      try {
-        localStorage.setItem(key, value);
-      } catch {}
-    }
-  };
-}
-
 async function loadState() {
+  try { state.recipes = JSON.parse(localStorage.getItem('herbi_recipes') || '[]'); } catch(e) { state.recipes = []; }
+  try { state.plan = JSON.parse(localStorage.getItem('herbi_plan') || '[]'); } catch(e) { state.plan = []; }
   try {
-    const r = await window.storage.get('recipes');
-    state.recipes = r.value ? JSON.parse(r.value) : [];
-  } catch { state.recipes = []; }
-  try {
-    const p = await window.storage.get('plan');
-    state.plan = p.value ? JSON.parse(p.value) : [];
-  } catch { state.plan = []; }
-  try {
-    const s = await window.storage.get('settings');
-    if (s.value) {
-      const parsed = JSON.parse(s.value);
-      state.settings = Object.assign(state.settings, parsed);
-    }
-  } catch {}
-  
-  // Beispielrezept wenn leer
-  if (state.recipes.length === 0) {
-    state.recipes.push({
-      id: uid(),
-      name: "Pasta mit Tomaten-Basilikum-Soße",
-      servings: 2,
-      prepMinutes: 20,
-      calories: 480,
-      tags: "vegetarisch, schnell, italienisch",
-      ingredients: [
-        { name: "Spaghetti", amount: 200, unit: "g", category: "pantry", price: 1.20 },
-        { name: "Tomaten (Dose)", amount: 400, unit: "g", category: "pantry", price: 0.89 },
-        { name: "Knoblauch", amount: 2, unit: "Zehen", category: "produce", price: 0.30 },
-        { name: "Basilikum", amount: 1, unit: "Bund", category: "produce", price: 1.50 },
-        { name: "Parmesan", amount: 50, unit: "g", category: "dairy", price: 2.49 },
-        { name: "Olivenöl", amount: 2, unit: "EL", category: "pantry", price: 0.40 }
-      ],
-      instructions: "1. Spaghetti in kochendem Salzwasser al dente kochen.\n2. Knoblauch fein hacken und in Olivenöl anschwitzen.\n3. Tomaten dazugeben und 10 Minuten köcheln lassen.\n4. Mit Salz, Pfeffer und Basilikum abschmecken.\n5. Nudeln abgießen und mit der Soße vermischen.\n6. Mit Parmesan servieren.",
-      equipment: ["Herd", "Topf", "Pfanne"],
-      sourceUrl: ""
-    });
-    await saveRecipes();
-  }
+    const s = JSON.parse(localStorage.getItem('herbi_settings') || '{}');
+    state.settings = Object.assign(state.settings, s);
+  } catch(e) { /* defaults bleiben */ }
 }
-async function saveRecipes() { try { await window.storage.set('recipes', JSON.stringify(state.recipes)); } catch {} }
-async function savePlan() { try { await window.storage.set('plan', JSON.stringify(state.plan)); } catch {} }
-async function saveSettings() { try { await window.storage.set('settings', JSON.stringify(state.settings)); } catch {} }
+async function saveRecipes() {
+  try { localStorage.setItem('herbi_recipes', JSON.stringify(state.recipes)); return true; }
+  catch(e) { console.error('saveRecipes fehlgeschlagen:', e); toast('⚠ Speichern der Rezepte fehlgeschlagen.'); return false; }
+}
+async function savePlan() {
+  try { localStorage.setItem('herbi_plan', JSON.stringify(state.plan)); return true; }
+  catch(e) { console.error('savePlan fehlgeschlagen:', e); toast('⚠ Speichern des Wochenplans fehlgeschlagen.'); return false; }
+}
+async function saveSettings() {
+  try { localStorage.setItem('herbi_settings', JSON.stringify(state.settings)); return true; }
+  catch(e) { console.error('saveSettings fehlgeschlagen:', e); toast('⚠ Speichern der Einstellungen fehlgeschlagen: ' + e.message); return false; }
+}
+
+function getApiKey() { return localStorage.getItem('herbi_api_key') || ''; }
+function setApiKey(key) { localStorage.setItem('herbi_api_key', (key || '').trim()); }
+function hasApiKey() { return !!getApiKey(); }
+function ensureApiKey() {
+  if (!hasApiKey()) {
+    toast('Bitte zuerst einen DeepSeek API-Key unter Einstellungen eintragen.');
+    switchTab('settings');
+    return false;
+  }
+  return true;
+}
 
 function allAppliances() {
   const custom = state.settings.customAppliances || [];
@@ -640,13 +199,10 @@ function toast(msg) {
   el.className = 'toast';
   el.textContent = msg;
   document.body.appendChild(el);
-  setTimeout(() => el.remove(), 3000);
+  setTimeout(() => el.remove(), 2200);
 }
 
-function escapeHtml(str) { if (!str) return ''; return String(str).replace(/[&<>"]/g, function(m) { if (m === '&') return '&amp;'; if (m === '<') return '&lt;'; if (m === '>') return '&gt;'; if (m === '"') return '&quot;'; return m; }); }
-function escapeAttr(str) { if (!str) return ''; return String(str).replace(/"/g, '&quot;'); }
-
-/* ---------------- Datum ---------------- */
+/* ---------------- Datumshilfen ---------------- */
 
 function fmtISO(d) {
   return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
@@ -666,274 +222,35 @@ function fmtDE(iso) {
   const [y,m,d] = iso.split('-');
   return `${d}.${m}.${y}`;
 }
-function getTodayISO() { return fmtISO(new Date()); }
 
-/* ---------------- API: DeepSeek + Anthropic ---------------- */
+/* ---------------- Anthropic API (KI-Funktionen) ---------------- */
 
-async function callAI(prompt, maxTokens = 4096, retries = 3) {
-  const apiKey = state.settings.apiKey;
-  if (!apiKey) {
-    toast('⚠️ Bitte API-Key in den Einstellungen hinterlegen');
-    throw new Error('Kein API-Key');
-  }
+async function callClaude(prompt, maxTokens=600) {
+  const apiKey = getApiKey();
+  if (!apiKey) throw new Error('Kein API-Key hinterlegt. Bitte unter Einstellungen eintragen.');
 
-  const provider = state.settings.provider || 'deepseek';
-  const tokens = Math.min(maxTokens, state.settings.maxTokens || 4096);
-  const temperature = state.settings.temperature || 0.7;
-
-  let endpoint, headers, body;
-
-  if (provider === 'deepseek') {
-    endpoint = 'https://api.deepseek.com/v1/chat/completions';
-    headers = {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${apiKey}`
-    };
-    body = {
-      model: 'deepseek-chat',
-      messages: [{ role: 'user', content: prompt }],
-      max_tokens: tokens,
-      temperature: temperature,
-      top_p: 0.95
-    };
-  } else {
-    // Anthropic
-    endpoint = 'https://api.anthropic.com/v1/messages';
-    headers = {
-      'Content-Type': 'application/json',
-      'x-api-key': apiKey,
-      'anthropic-version': '2023-06-01'
-    };
-    body = {
-      model: 'claude-3-5-sonnet-20241022',
-      max_tokens: tokens,
-      temperature: temperature,
-      top_p: 0.95,
-      messages: [{ role: 'user', content: prompt }]
-    };
-  }
-
-  for (let attempt = 1; attempt <= retries; attempt++) {
-    try {
-      const resp = await fetch(endpoint, {
-        method: 'POST',
-        headers: headers,
-        body: JSON.stringify(body)
-      });
-
-      if (!resp.ok) {
-        const errorData = await resp.json();
-        throw new Error(`API-Fehler ${resp.status}: ${errorData.error?.message || errorData.error || resp.statusText}`);
-      }
-
-      const data = await resp.json();
-      let text;
-
-      if (provider === 'deepseek') {
-        text = data.choices?.[0]?.message?.content || '';
-      } else {
-        text = (data.content || []).map(b => b.text || '').join('');
-      }
-
-      // JSON extrahieren
-      const cleaned = text.replace(/^```json\s*|\s*```$/g, '').trim();
-      const match = cleaned.match(/[\{\[][\s\S]*[\}\]]/);
-      const jsonStr = match ? match[0] : cleaned;
-
-      try {
-        return JSON.parse(jsonStr);
-      } catch (e) {
-        const repaired = repairJSON(jsonStr);
-        if (repaired) return repaired;
-        throw new Error('Ungültiges JSON-Format');
-      }
-
-    } catch (error) {
-      console.error(`Versuch ${attempt}/${retries} fehlgeschlagen:`, error);
-      if (attempt === retries) {
-        toast(`❌ KI-Fehler: ${error.message}`);
-        throw error;
-      }
-      await new Promise(resolve => setTimeout(resolve, 1000 * attempt));
-    }
-  }
-}
-
-function repairJSON(jsonStr) {
-  try {
-    let fixed = jsonStr
-      .replace(/,\s*}/g, '}')
-      .replace(/,\s*\]/g, ']')
-      .replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:/g, '"$2":')
-      .replace(/:(\s*)'([^']*)'/g, ':"$2"')
-      .replace(/:\s*undefined/g, ':null')
-      .replace(/:\s*NaN/g, ':null')
-      .replace(/:\s*Infinity/g, ':null');
-    return JSON.parse(fixed);
-  } catch { return null; }
-}
-
-// Alias für Abwärtskompatibilität
-async function callClaude(prompt, maxTokens, retries) {
-  return callAI(prompt, maxTokens, retries);
-}
-
-/* ---------------- Automatische Kategorisierung ---------------- */
-
-function autoCategorize(ingredientName) {
-  const name = ingredientName.toLowerCase().trim();
-  for (const [category, keywords] of Object.entries(CATEGORY_KEYWORDS)) {
-    for (const keyword of keywords) {
-      if (name === keyword || name.startsWith(keyword + ' ') || name.endsWith(' ' + keyword) || name.includes(keyword)) {
-        return category;
-      }
-    }
-  }
-  return "other";
-}
-
-async function autoCategorizeWithAI(ingredients) {
-  if (!ingredients || ingredients.length === 0) return {};
-  try {
-    const prompt = `
-Kategorisiere folgende Zutaten in diese Kategorien:
-${Object.entries(CATEGORY_LABELS).map(([key, label]) => `- ${key}: ${label}`).join('\n')}
-
-Zutaten:
-${ingredients.map(ing => `- ${ing.name}`).join('\n')}
-
-Antworte NUR als JSON-Objekt:
-{
-  "zutat1": "kategorie",
-  "zutat2": "kategorie"
-}`;
-    return await callAI(prompt, 1024);
-  } catch {
-    const result = {};
-    ingredients.forEach(ing => {
-      result[ing.name] = autoCategorize(ing.name);
-    });
-    return result;
-  }
-}
-
-/* ---------------- KI-Rezept-Generierung ---------------- */
-
-async function generateRecipeWithAI() {
-  try {
-    toast('🌿 KI generiert Rezept...');
-    const prompt = `
-Erstelle ein kreatives Rezept mit:
-- Name: Einprägsamer deutscher Name
-- Portionen: 2-4
-- Zutaten: 5-8 frische, saisonale Zutaten
-- Kategorien: produce, dairy, meat, pantry, spices
-- Preise: Realistische Preise in € (0.50-8.00)
-- Anleitung: Klare, strukturierte Schritte (mit \\n)
-
-Antworte NUR als JSON:
-{
-  "name": "Rezeptname",
-  "servings": 2,
-  "prepMinutes": 20,
-  "calories": 450,
-  "tags": "vegetarisch, schnell",
-  "ingredients": [
-    {"name": "Zutat", "amount": 2, "unit": "Stück", "price": 1.50}
-  ],
-  "instructions": "Schritt 1: ...\\nSchritt 2: ...",
-  "equipment": ["Backofen", "Pfanne"],
-  "sourceUrl": ""
-}`;
-
-    const result = await callAI(prompt, 4096);
-    if (!result.name || !result.ingredients) {
-      throw new Error('Unvollständiges Rezept');
-    }
-
-    const categorized = await autoCategorizeWithAI(result.ingredients);
-    const recipe = {
-      id: uid(),
-      ...result,
-      createdAt: new Date().toISOString(),
-      tags: result.tags || '',
-      ingredients: result.ingredients.map(ing => ({
-        ...ing,
-        category: categorized[ing.name] || autoCategorize(ing.name),
-        price: ing.price || Math.round((Math.random() * 3 + 0.5) * 100) / 100
-      }))
-    };
-
-    state.recipeDraft = recipe;
-    state.editingRecipeId = null;
-    toast('✅ Rezept von KI generiert! Prüfe und speichere es.');
-    render();
-
-  } catch (error) {
-    console.error('KI-Fehler:', error);
-    toast(`❌ Fehler: ${error.message}`);
-  }
-}
-
-/* ---------------- Preis-Schätzung ---------------- */
-
-async function estimatePrices() {
-  const rows = document.querySelectorAll('#ingredient-rows .ing-row');
-  const ingredients = [];
-  rows.forEach(row => {
-    const name = row.querySelector('.ing-name').value.trim();
-    if (name) {
-      ingredients.push({
-        name,
-        amount: parseFloat(row.querySelector('.ing-amount').value) || 1,
-        unit: row.querySelector('.ing-unit').value.trim() || 'Stück',
-        category: row.querySelector('.ing-category').value
-      });
-    }
+  const resp = await fetch("https://api.deepseek.com/chat/completions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${apiKey}`,
+    },
+    body: JSON.stringify({
+      model: "deepseek-chat",
+      max_tokens: maxTokens,
+      messages: [{ role: "user", content: prompt }]
+    })
   });
-
-  if (ingredients.length === 0) {
-    toast('Bitte füge zuerst Zutaten hinzu');
-    return;
-  }
-
-  try {
-    toast('💶 Schätze Preise...');
-    const prompt = `
-Gib realistische Preise in € für deutsche Supermärkte (Rewe/Edeka):
-${ingredients.map(ing => `- ${ing.name} (${ing.amount} ${ing.unit})`).join('\n')}
-
-Antworte NUR als JSON-Array:
-[
-  {"name": "Zutat", "price": 1.99}
-]`;
-
-    const result = await callAI(prompt, 2048);
-    if (!Array.isArray(result)) throw new Error('Ungültiges Format');
-
-    const priceMap = {};
-    result.forEach(item => {
-      if (item.name && item.price !== undefined) {
-        priceMap[item.name.toLowerCase().trim()] = item.price;
-      }
-    });
-
-    rows.forEach(row => {
-      const name = row.querySelector('.ing-name').value.trim().toLowerCase();
-      const priceInput = row.querySelector('.ing-price');
-      if (priceMap[name]) {
-        priceInput.value = priceMap[name].toFixed(2);
-      }
-    });
-
-    toast('✅ Preise geschätzt! Bitte prüfe die Werte.');
-  } catch (error) {
-    console.error('Preis-Schätzung fehlgeschlagen:', error);
-    toast(`❌ Fehler: ${error.message}`);
-  }
+  const data = await resp.json();
+  if (data.error) throw new Error(data.error.message || 'API-Fehler');
+  const text = (data.choices && data.choices[0] && data.choices[0].message)
+    ? data.choices[0].message.content : "";
+  const cleaned = text.replace(/^```json\s*|\s*```$/g, "").trim();
+  const match = cleaned.match(/[\{\[][\s\S]*[\}\]]/);
+  return JSON.parse(match ? match[0] : cleaned);
 }
 
-/* ---------------- Tabs / Router ---------------- */
+/* ---------------- Router / Tabs ---------------- */
 
 const TABS = [
   { id: "recipes", label: "Rezepte" },
@@ -948,13 +265,11 @@ function renderTabs() {
     `<button class="${state.activeTab === t.id ? 'active' : ''}" onclick="switchTab('${t.id}')">${t.label}</button>`
   ).join('');
 }
-
 function switchTab(tab) {
   state.activeTab = tab;
   state.editingRecipeId = undefined;
   render();
 }
-
 function render() {
   renderTabs();
   const app = document.getElementById('app');
@@ -973,14 +288,14 @@ function renderRecipesView() {
   return `
     <div class="toolbar">
       <button onclick="openRecipeForm(null)">+ Neues Rezept</button>
-      <button class="btn-accent" onclick="generateRecipeWithAI()">✨ KI generieren</button>
-      <input type="text" placeholder="🔍 Suche…" style="max-width:160px;margin-left:auto;"
+      <button class="btn-accent" onclick="generateRecipeWithAI()">✨ Per KI generieren</button>
+      <input type="text" placeholder="Suche…" style="max-width:140px;margin-left:auto;"
              value="${state.recipeQuery || ''}" oninput="state.recipeQuery=this.value; render();">
     </div>
     <div class="card">
-      ${list.length === 0 ? `<div class="empty-state">📖 Noch keine Rezepte. Leg dein erstes an oder lass dir eins von der KI generieren.</div>` : `
+      ${list.length === 0 ? `<div class="empty-state">Noch keine Rezepte. Leg dein erstes an.</div>` : `
       <table>
-        <thead><tr><th>Name</th><th>Port.</th><th>Zeit</th><th>Tags</th><th></th></tr></thead>
+        <thead><tr><th>Name</th><th>Portionen</th><th>Zeit</th><th>Tags</th><th></th></tr></thead>
         <tbody>
           ${list.map(r => `
             <tr>
@@ -989,8 +304,8 @@ function renderRecipesView() {
               <td>${r.prepMinutes || '–'} Min</td>
               <td>${(r.tags||'').split(',').filter(Boolean).map(t=>`<span class="tag-pill">${escapeHtml(t.trim())}</span>`).join('') || '–'}</td>
               <td style="white-space:nowrap;">
-                <button class="btn-secondary btn-small" onclick="openRecipeForm('${r.id}')">✏️</button>
-                <button class="btn-danger btn-small" onclick="deleteRecipe('${r.id}')">🗑️</button>
+                <button class="btn-secondary btn-small" onclick="openRecipeForm('${r.id}')">Bearbeiten</button>
+                <button class="btn-danger btn-small" onclick="deleteRecipe('${r.id}')">Löschen</button>
               </td>
             </tr>`).join('')}
         </tbody>
@@ -1003,7 +318,7 @@ function openRecipeForm(id) {
   state.editingRecipeId = id || null;
   state.recipeDraft = null;
   render();
-  setTimeout(() => initRecipeFormRows(id ? state.recipes.find(r => r.id === id) : null), 50);
+  initRecipeFormRows(id ? state.recipes.find(r => r.id === id) : null);
 }
 
 function currentFormRecipe() {
@@ -1014,9 +329,8 @@ function currentFormRecipe() {
 function initRecipeFormRows(recipeLike) {
   const ingredients = recipeLike ? (recipeLike.ingredients || []) : [];
   const container = document.getElementById('ingredient-rows');
-  if (!container) return;
   container.innerHTML = '';
-  if (ingredients.length) ingredients.forEach(ing => addIngredientRow(ing));
+  if (ingredients.length) ingredients.forEach(addIngredientRow);
   else addIngredientRow();
 }
 
@@ -1025,45 +339,44 @@ function renderRecipeForm() {
   const isDraft = !state.editingRecipeId && !!state.recipeDraft;
   const equipment = recipe ? (recipe.equipment || []) : [];
   return `
-    <h1>${state.editingRecipeId ? '✏️ Rezept bearbeiten' : (isDraft ? '✨ KI-Vorschlag prüfen' : '📝 Neues Rezept')}</h1>
+    <h1>${state.editingRecipeId ? 'Rezept bearbeiten' : (isDraft ? 'KI-Vorschlag prüfen & speichern' : 'Neues Rezept')}</h1>
     ${isDraft ? `<div class="card" style="background:var(--primary-tint);border-color:var(--primary);margin-bottom:10px;">
         <p style="margin:0;font-size:.88rem;color:var(--primary-dark);">🌿 Von der KI vorgeschlagen — prüf die Angaben (v.a. Preise & Mengen) und passe an, bevor du speicherst.</p>
       </div>` : ''}
     <div class="card">
-      <div class="field"><label>Name *</label><input type="text" id="f-name" value="${recipe ? escapeAttr(recipe.name) : ''}"></div>
+      <div class="field"><label>Name</label><input type="text" id="f-name" value="${recipe ? escapeAttr(recipe.name) : ''}"></div>
       <div class="field-row">
         <div class="field"><label>Portionen</label><input type="number" id="f-servings" min="1" value="${recipe ? recipe.servings : 2}"></div>
         <div class="field"><label>Zeit (Min)</label><input type="number" id="f-prep" min="0" value="${recipe ? (recipe.prepMinutes||0) : 20}"></div>
         <div class="field"><label>kcal/Portion</label><input type="number" id="f-calories" min="0" value="${recipe && recipe.calories ? recipe.calories : ''}"></div>
       </div>
       <div class="field-row">
-        <div class="field"><label>Tags (Komma)</label><input type="text" id="f-tags" value="${recipe ? escapeAttr(recipe.tags||'') : ''}"></div>
+        <div class="field"><label>Tags (Komma-getrennt)</label><input type="text" id="f-tags" value="${recipe ? escapeAttr(recipe.tags||'') : ''}"></div>
         <div class="field"><label>Quelle (URL)</label><input type="text" id="f-source" value="${recipe ? escapeAttr(recipe.sourceUrl||'') : ''}"></div>
       </div>
 
-      <div class="divider">🔧 Benötigte Küchengeräte</div>
+      <div class="divider">Benötigte Küchengeräte</div>
       <div class="equipment-grid">
         ${allAppliances().map(a => `
           <label><input type="checkbox" name="f-equipment" value="${escapeAttr(a)}" ${equipment.includes(a)?'checked':''}> ${escapeHtml(a)}</label>
         `).join('')}
       </div>
 
-      <div class="divider">🛒 Zutaten</div>
+      <div class="divider">Zutaten</div>
       <div class="toolbar" style="margin-bottom:6px;">
         <button type="button" class="btn-secondary btn-small" onclick="addIngredientRow()">+ Zutat</button>
-        <button type="button" class="btn-accent btn-small" onclick="estimatePrices()">💶 Preise schätzen</button>
-        <button type="button" class="btn-success btn-small" onclick="categorizeIngredients()">🏷️ Kategorisieren</button>
+        <button type="button" class="btn-accent btn-small" onclick="estimatePrices()">💶 Preise schätzen (KI)</button>
+        <span id="price-status" class="item-meta"></span>
       </div>
       <div class="ing-header"><span>Zutat</span><span>Menge</span><span>Einh.</span><span>Kategorie</span><span>Preis €</span><span></span></div>
       <div id="ingredient-rows"></div>
 
-      <div class="divider">📖 Anleitung</div>
+      <div class="divider">Anleitung</div>
       <div class="field"><textarea id="f-instructions" rows="6">${recipe ? escapeHtml(recipe.instructions||'') : ''}</textarea></div>
 
       <div class="toolbar">
-        <button onclick="saveRecipeForm()">💾 Speichern</button>
+        <button onclick="saveRecipeForm()">Speichern</button>
         <button class="btn-secondary" onclick="state.editingRecipeId=undefined; state.recipeDraft=null; render();">Abbrechen</button>
-        ${isDraft ? `<button class="btn-danger" onclick="state.recipeDraft=null; render();">Verwerfen</button>` : ''}
       </div>
     </div>
   `;
@@ -1072,50 +385,19 @@ function renderRecipeForm() {
 function addIngredientRow(data) {
   data = data || {};
   const container = document.getElementById('ingredient-rows');
-  if (!container) return;
   const row = document.createElement('div');
   row.className = 'ing-row';
   row.innerHTML = `
-    <input type="text" class="ing-name" placeholder="Zutat" value="${escapeAttr(data.name||'')}">
-    <input type="number" class="ing-amount" step="any" placeholder="Menge" value="${data.amount ?? ''}">
-    <input type="text" class="ing-unit" placeholder="Einheit" value="${escapeAttr(data.unit||'')}">
+    <input type="text" class="ing-name" value="${escapeAttr(data.name||'')}">
+    <input type="number" class="ing-amount" step="any" value="${data.amount ?? ''}">
+    <input type="text" class="ing-unit" value="${escapeAttr(data.unit||'')}">
     <select class="ing-category">
       ${CATEGORIES.map(c => `<option value="${c}" ${(data.category||'produce')===c?'selected':''}>${CATEGORY_LABELS[c]}</option>`).join('')}
     </select>
-    <input type="number" class="ing-price" step="0.01" placeholder="Preis" value="${data.price ?? ''}">
+    <input type="number" class="ing-price" step="0.01" value="${data.price ?? ''}">
     <button type="button" class="remove-row" onclick="this.closest('.ing-row').remove()">✕</button>
   `;
   container.appendChild(row);
-}
-
-async function categorizeIngredients() {
-  const rows = document.querySelectorAll('#ingredient-rows .ing-row');
-  const ingredients = [];
-  rows.forEach(row => {
-    const name = row.querySelector('.ing-name').value.trim();
-    if (name) ingredients.push({ name });
-  });
-  if (ingredients.length === 0) { toast('Bitte füge zuerst Zutaten hinzu'); return; }
-
-  try {
-    toast('🏷️ Kategorisiere Zutaten...');
-    const categories = await autoCategorizeWithAI(ingredients);
-    rows.forEach(row => {
-      const name = row.querySelector('.ing-name').value.trim();
-      const select = row.querySelector('.ing-category');
-      const category = categories[name] || autoCategorize(name);
-      if (category && CATEGORIES.includes(category)) select.value = category;
-    });
-    toast('✅ Kategorisierung abgeschlossen!');
-  } catch {
-    rows.forEach(row => {
-      const name = row.querySelector('.ing-name').value.trim();
-      const select = row.querySelector('.ing-category');
-      const category = autoCategorize(name);
-      if (category && CATEGORIES.includes(category)) select.value = category;
-    });
-    toast('✅ Lokale Kategorisierung durchgeführt');
-  }
 }
 
 function saveRecipeForm() {
@@ -1137,442 +419,471 @@ function saveRecipeForm() {
       price: priceRaw ? parseFloat(priceRaw) : null,
     });
   });
-  if (ingredients.length === 0) { toast('Bitte mindestens eine Zutat angeben.'); return; }
 
-  const recipeData = {
-    id: state.editingRecipeId || uid(),
+  const data = {
     name,
-    servings: parseInt(document.getElementById('f-servings').value) || 2,
-    prepMinutes: parseInt(document.getElementById('f-prep').value) || 20,
-    calories: parseInt(document.getElementById('f-calories').value) || null,
+    servings: parseInt(document.getElementById('f-servings').value || '2', 10),
+    prepMinutes: parseInt(document.getElementById('f-prep').value || '0', 10),
+    calories: document.getElementById('f-calories').value ? parseInt(document.getElementById('f-calories').value, 10) : null,
     tags: document.getElementById('f-tags').value.trim(),
     sourceUrl: document.getElementById('f-source').value.trim(),
-    ingredients,
     instructions: document.getElementById('f-instructions').value.trim(),
     equipment,
+    ingredients,
   };
 
   if (state.editingRecipeId) {
     const idx = state.recipes.findIndex(r => r.id === state.editingRecipeId);
-    if (idx > -1) state.recipes[idx] = recipeData;
+    state.recipes[idx] = { ...state.recipes[idx], ...data };
   } else {
-    state.recipes.push(recipeData);
+    state.recipes.push({ id: uid(), ...data });
   }
+  saveRecipes();
   state.editingRecipeId = undefined;
   state.recipeDraft = null;
-  saveRecipes();
-  toast('✅ Rezept gespeichert!');
+  toast('Rezept gespeichert.');
   render();
 }
 
+async function generateRecipeWithAI() {
+  if (!ensureApiKey()) return;
+  const wish = window.prompt(
+    "Was für ein Rezept soll die KI erstellen?\n(z.B. \"schnelles veganes Nudelgericht für 2 Personen\", \"proteinreiches Frühstück\", \"Resteverwertung mit Hackfleisch und Paprika\")"
+  );
+  if (!wish || !wish.trim()) return;
+
+  toast('KI erstellt Rezept…');
+  const prompt = `Erstelle ein Kochrezept basierend auf diesem Wunsch: "${wish.trim()}".
+
+Antworte AUSSCHLIESSLICH mit einem JSON-Objekt, keine Erklärung, kein Markdown, kein Codeblock.
+Format exakt so:
+{
+  "name": "Rezeptname",
+  "servings": 2,
+  "prepMinutes": 25,
+  "calories": 550,
+  "tags": "vegan,schnell",
+  "equipment": ["Herd"],
+  "instructions": "Schritt-für-Schritt-Anleitung als Fließtext, nummeriert.",
+  "ingredients": [
+    {"name": "Zutat", "amount": 200, "unit": "g", "category": "pantry", "price": 1.50}
+  ]
+}
+
+Regeln:
+- equipment: nur Werte aus dieser Liste verwenden: ${allAppliances().join(", ")}
+- ingredients[].category: nur Werte aus dieser Liste: ${CATEGORIES.join(", ")}
+- ingredients[].price: grobe Schätzung in Euro (deutscher Supermarkt-Durchschnitt) für die angegebene Menge
+- Mengen realistisch für die angegebene Portionenzahl`;
+
+  try {
+    const draft = await callClaude(prompt, 1200);
+    if (!draft.name || !Array.isArray(draft.ingredients)) {
+      throw new Error('Unvollständige Antwort');
+    }
+    draft.tags = draft.tags || '';
+    draft.sourceUrl = '';
+    draft.equipment = Array.isArray(draft.equipment) ? draft.equipment : [];
+    draft.ingredients = draft.ingredients.map(i => ({
+      name: i.name, amount: i.amount ?? null, unit: i.unit || '',
+      category: CATEGORIES.includes(i.category) ? i.category : 'other',
+      price: i.price ?? null,
+    }));
+    state.activeTab = 'recipes';
+    state.editingRecipeId = null;
+    state.recipeDraft = draft;
+    render();
+    initRecipeFormRows(draft);
+    toast('Vorschlag bereit — bitte prüfen & speichern.');
+  } catch (e) {
+    toast('KI-Rezept konnte nicht erstellt werden.');
+    console.error(e);
+  }
+}
+
 function deleteRecipe(id) {
-  if (!confirm('Rezept wirklich löschen?')) return;
+  if (!confirm('Dieses Rezept wirklich löschen?')) return;
   state.recipes = state.recipes.filter(r => r.id !== id);
-  saveRecipes();
+  state.plan = state.plan.filter(p => p.recipeId !== id);
+  saveRecipes(); savePlan();
   render();
-  toast('🗑️ Rezept gelöscht');
+}
+
+async function estimatePrices() {
+  if (!ensureApiKey()) return;
+  const rows = document.querySelectorAll('#ingredient-rows .ing-row');
+  const items = [];
+  rows.forEach(row => {
+    const n = row.querySelector('.ing-name').value.trim();
+    if (!n) return;
+    items.push({ name: n, amount: row.querySelector('.ing-amount').value, unit: row.querySelector('.ing-unit').value });
+  });
+  if (!items.length) { toast('Erst Zutaten eintragen.'); return; }
+  const statusEl = document.getElementById('price-status');
+  statusEl.textContent = 'Schätze Preise…';
+  const itemsStr = items.map(i => `- ${i.name}: ${i.amount||'?'} ${i.unit||''}`.trim()).join('\n');
+  const prompt = `Schätze grobe, realistische Supermarktpreise in Euro (deutscher Durchschnitt, z.B. Rewe/Edeka-Niveau) für folgende Zutaten in den jeweils angegebenen Mengen:\n\n${itemsStr}\n\nAntworte AUSSCHLIESSLICH mit einem JSON-Objekt, keine Erklärung, kein Markdown.\nFormat exakt so: {"Zutatname": 1.99, "Zutatname2": 0.50}\nVerwende exakt die Zutatnamen aus der Liste oben als Keys. Preise als Dezimalzahl in Euro, für die angegebene Menge (nicht pro kg).`;
+  try {
+    const prices = await callClaude(prompt, 800);
+    rows.forEach(row => {
+      const n = row.querySelector('.ing-name').value.trim();
+      if (prices[n] !== undefined) row.querySelector('.ing-price').value = Number(prices[n]).toFixed(2);
+    });
+    statusEl.textContent = 'Preise aktualisiert.';
+  } catch (e) {
+    statusEl.textContent = '';
+    toast('Preisschätzung fehlgeschlagen.');
+    console.error(e);
+  }
 }
 
 /* ---------------- Wochenplan ---------------- */
 
+function missingEquipment(recipe) {
+  if (!recipe || !recipe.equipment) return [];
+  const owned = new Set(state.settings.ownedAppliances || []);
+  return recipe.equipment.filter(e => !owned.has(e));
+}
+
 function renderPlannerView() {
-  const today = getTodayISO();
-  const start = state.plannerWeekStart || mondayOf(today);
-  const week = WEEKDAYS.map((day, i) => ({ day, date: addDays(start, i), iso: addDays(start, i) }));
-  const planMap = {};
-  state.plan.forEach(p => { if (!planMap[p.date]) planMap[p.date] = []; planMap[p.date].push(p); });
+  if (!state.plannerWeekStart) state.plannerWeekStart = mondayOf(fmtISO(new Date()));
+  const weekStart = state.plannerWeekStart;
+  const weekEnd = addDays(weekStart, 6);
 
-  let totalCost = 0;
-  const daysWithPlans = week.filter(w => planMap[w.iso]);
-  daysWithPlans.forEach(w => {
-    (planMap[w.iso] || []).forEach(p => {
+  const days = [];
+  for (let i = 0; i < 7; i++) {
+    const iso = addDays(weekStart, i);
+    const entries = state.plan.filter(p => p.date === iso).map(p => {
       const recipe = state.recipes.find(r => r.id === p.recipeId);
-      if (recipe) {
-        totalCost += recipe.ingredients.reduce((sum, ing) => sum + (ing.price || 0), 0);
-      }
-    });
-  });
-
-  const budget = state.settings.weeklyBudget;
-  let budgetHtml = '';
-  if (budget) {
-    const remaining = budget - totalCost;
-    const cls = remaining >= 0 ? 'budget-ok' : 'budget-over';
-    budgetHtml = `<div class="budget-banner ${cls}">💰 Budget: ${budget.toFixed(2)} € | Verplant: ${totalCost.toFixed(2)} € | ${remaining >= 0 ? '✅ Noch ' + remaining.toFixed(2) + ' € übrig' : '⚠️ ' + Math.abs(remaining).toFixed(2) + ' € über Budget'}</div>`;
+      return { ...p, recipe, missing: recipe ? missingEquipment(recipe) : [] };
+    }).filter(e => e.recipe);
+    days.push({ iso, label: `${WEEKDAYS[i]} ${fmtDE(iso).slice(0,5)}`, entries });
   }
 
   return `
     <div class="week-nav">
-      <button class="btn-secondary btn-small" onclick="changeWeek(-1)">◀ Vorherige</button>
-      <span style="font-weight:600;">${fmtDE(start)} – ${fmtDE(addDays(start,6))}</span>
-      <button class="btn-secondary btn-small" onclick="changeWeek(1)">Nächste ▶</button>
-      <button class="btn-secondary btn-small" onclick="state.plannerWeekStart=mondayOf(getTodayISO()); render();">Heute</button>
+      <button class="btn-secondary btn-small" onclick="state.plannerWeekStart=addDays(state.plannerWeekStart,-7); render();">◀</button>
+      <h2 style="margin:0;font-size:1rem;">${fmtDE(weekStart)} – ${fmtDE(weekEnd)}</h2>
+      <button class="btn-secondary btn-small" onclick="state.plannerWeekStart=addDays(state.plannerWeekStart,7); render();">▶</button>
     </div>
-    ${budgetHtml}
+    <div class="toolbar">
+      <button class="btn-accent btn-small" onclick="aiSuggestWeek()">✨ KI-Vorschlag</button>
+      <button class="btn-danger btn-small" onclick="clearWeek()">Woche leeren</button>
+    </div>
+    ${state.recipes.length === 0 ? `<div class="empty-state">Noch keine Rezepte — leg zuerst welche unter "Rezepte" an.</div>` : `
     <div class="week-days">
-      ${week.map(w => {
-        const items = planMap[w.iso] || [];
-        return `
-          <div class="day-card">
-            <h3>${w.day} (${fmtDE(w.iso)}) <span style="font-size:.75rem;font-weight:400;color:var(--text-muted);">${items.length} Rezepte</span></h3>
-            ${items.map(p => {
-              const recipe = state.recipes.find(r => r.id === p.recipeId);
-              if (!recipe) return `<div class="plan-item warn">⚠️ Rezept nicht gefunden</div>`;
-              const cost = recipe.ingredients.reduce((sum, ing) => sum + (ing.price || 0), 0);
-              return `<div class="plan-item"><span>${escapeHtml(recipe.name)} <span style="font-size:.75rem;color:var(--text-muted);">${cost.toFixed(2)} €</span></span>
-                <button class="remove-x" onclick="removeFromPlan('${w.iso}','${p.recipeId}')">✕</button>
-              </div>`;
-            }).join('')}
-            <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap;">
-              <select id="add-recipe-${w.iso}" style="width:auto;font-size:.85rem;padding:6px 8px;flex:1;min-width:120px;">
-                <option value="">+ Rezept hinzufügen</option>
-                ${state.recipes.map(r => `<option value="${r.id}">${escapeHtml(r.name)}</option>`).join('')}
-              </select>
-              <button class="btn-secondary btn-small" onclick="addToPlan('${w.iso}')">Hinzufügen</button>
+      ${days.map(day => `
+        <div class="day-card">
+          <h3>${day.label}</h3>
+          ${day.entries.map(e => `
+            <div class="plan-item ${e.missing.length ? 'warn' : ''}">
+              <div>${escapeHtml(e.recipe.name)}${e.servingsOverride ? ` (${e.servingsOverride}P)` : ''}
+                ${e.missing.length ? `<span class="warn-note">⚠ fehlt: ${e.missing.join(', ')}</span>` : ''}
+              </div>
+              <button class="remove-x" onclick="removePlanEntry('${e.id}')">✕</button>
             </div>
-          </div>
-        `;
-      }).join('')}
-    </div>
+          `).join('')}
+          <select style="margin-top:4px;font-size:.82rem;" onchange="addPlanEntry('${day.iso}', this.value); this.value='';">
+            <option value="" selected disabled>+ Rezept hinzufügen…</option>
+            ${state.recipes.map(r => `<option value="${r.id}">${missingEquipment(r).length?'⚠ ':''}${escapeHtml(r.name)} (${r.servings}P)</option>`).join('')}
+          </select>
+        </div>
+      `).join('')}
+    </div>`}
   `;
 }
 
-function changeWeek(delta) {
-  const current = state.plannerWeekStart || mondayOf(getTodayISO());
-  state.plannerWeekStart = addDays(current, delta * 7);
+function addPlanEntry(date, recipeId) {
+  if (!recipeId) return;
+  state.plan.push({ id: uid(), date, recipeId, servingsOverride: null });
+  savePlan();
+  render();
+}
+function removePlanEntry(id) {
+  state.plan = state.plan.filter(p => p.id !== id);
+  savePlan();
+  render();
+}
+function clearWeek() {
+  if (!confirm('Alle Einträge dieser Woche entfernen?')) return;
+  const start = state.plannerWeekStart, end = addDays(start, 6);
+  state.plan = state.plan.filter(p => p.date < start || p.date > end);
+  savePlan();
   render();
 }
 
-function addToPlan(date) {
-  const select = document.getElementById(`add-recipe-${date}`);
-  if (!select) return;
-  const recipeId = select.value;
-  if (!recipeId) { toast('Bitte ein Rezept auswählen'); return; }
-  const recipe = state.recipes.find(r => r.id === recipeId);
-  if (!recipe) { toast('Rezept nicht gefunden'); return; }
-  if (state.plan.some(p => p.date === date && p.recipeId === recipeId)) {
-    toast('⚠️ Rezept ist bereits für diesen Tag geplant');
-    return;
+async function aiSuggestWeek() {
+  if (!ensureApiKey()) return;
+  if (state.recipes.length < 3) { toast('Lege mindestens 3 Rezepte an.'); return; }
+  toast('KI denkt nach…');
+  const names = state.recipes.map(r => r.name);
+  const prompt = `Du bekommst eine Liste von Rezepten. Erstelle daraus einen abwechslungsreichen 7-Tage-Essensplan (Montag bis Sonntag), indem du jedem Tag genau ein Rezept aus der Liste zuordnest. Rezepte dürfen mehrfach vorkommen, aber bevorzuge Abwechslung.\n\nVerfügbare Rezepte:\n${names.map(n=>'- '+n).join('\n')}\n\nAntworte AUSSCHLIESSLICH mit einem JSON-Objekt, keine Erklärung, kein Markdown.\nFormat exakt so: {"0": "Rezeptname für Montag", "1": "...", "2": "...", "3": "...", "4": "...", "5": "...", "6": "..."}\nDie Rezeptnamen müssen exakt aus der Liste oben übernommen werden.`;
+  try {
+    const suggestion = await callClaude(prompt, 500);
+    const nameToId = {}; state.recipes.forEach(r => nameToId[r.name] = r.id);
+    const start = state.plannerWeekStart, end = addDays(start, 6);
+    state.plan = state.plan.filter(p => p.date < start || p.date > end);
+    let added = 0;
+    for (let i = 0; i < 7; i++) {
+      const recipeName = suggestion[String(i)];
+      if (recipeName && nameToId[recipeName]) {
+        state.plan.push({ id: uid(), date: addDays(start, i), recipeId: nameToId[recipeName], servingsOverride: null });
+        added++;
+      }
+    }
+    savePlan();
+    toast(`${added} Tage gefüllt.`);
+    render();
+  } catch (e) {
+    toast('KI-Vorschlag fehlgeschlagen.');
+    console.error(e);
   }
-  state.plan.push({ date, recipeId });
-  savePlan();
-  toast(`✅ "${recipe.name}" zum Plan hinzugefügt`);
-  render();
-}
-
-function removeFromPlan(date, recipeId) {
-  state.plan = state.plan.filter(p => !(p.date === date && p.recipeId === recipeId));
-  savePlan();
-  render();
 }
 
 /* ---------------- Einkaufsliste ---------------- */
 
-function renderShoppingView() {
-  const planMap = {};
-  state.plan.forEach(p => {
-    if (!planMap[p.date]) planMap[p.date] = [];
-    planMap[p.date].push(p.recipeId);
-  });
-
-  const shoppingList = {};
-  let totalCost = 0;
-
-  Object.entries(planMap).forEach(([date, recipeIds]) => {
-    recipeIds.forEach(recipeId => {
-      const recipe = state.recipes.find(r => r.id === recipeId);
-      if (!recipe) return;
-      recipe.ingredients.forEach(ing => {
-        const key = ing.name.toLowerCase();
-        if (!shoppingList[key]) {
-          shoppingList[key] = {
-            name: ing.name,
-            amount: 0,
-            unit: ing.unit || 'Stück',
-            category: ing.category || 'other',
-            price: ing.price || 0,
-            checked: state.settings.checked && state.settings.checked[key] || false,
-            fromRecipes: []
-          };
-        }
-        if (ing.amount !== null && ing.amount !== undefined) {
-          shoppingList[key].amount += ing.amount;
-        }
-        if (!shoppingList[key].fromRecipes.includes(recipe.name)) {
-          shoppingList[key].fromRecipes.push(recipe.name);
-        }
-        if (ing.price) totalCost += ing.price;
-      });
-    });
-  });
-
-  const list = Object.values(shoppingList);
-  const checkedCount = list.filter(item => item.checked).length;
-
-  const categoryOrder = state.settings.categoryOrder || CATEGORIES;
-  list.sort((a, b) => {
-    const idxA = categoryOrder.indexOf(a.category);
-    const idxB = categoryOrder.indexOf(b.category);
-    return (idxA === -1 ? 999 : idxA) - (idxB === -1 ? 999 : idxB);
-  });
-
-  const grouped = {};
-  list.forEach(item => {
-    if (!grouped[item.category]) grouped[item.category] = [];
-    grouped[item.category].push(item);
-  });
-
-  return `
-    <div class="toolbar">
-      <span style="font-weight:600;">🛒 Einkaufsliste</span>
-      <span class="item-meta">${list.length} Artikel (${checkedCount} erledigt)</span>
-      <button class="btn-secondary btn-small" onclick="clearChecked()">✅ Erledigte entfernen</button>
-      <button class="btn-secondary btn-small" onclick="toggleAllChecked()">☑️ Alle umschalten</button>
-    </div>
-    <div class="card">
-      ${list.length === 0 ? `<div class="empty-state">📭 Keine Zutaten im Plan. Füge Rezepte zum Wochenplan hinzu.</div>` : `
-        ${Object.entries(grouped).map(([category, items]) => `
-          <div style="margin-bottom:14px;">
-            <div style="font-weight:600;color:var(--primary-dark);margin-bottom:6px;font-size:.9rem;">${CATEGORY_LABELS[category] || category}</div>
-            ${items.map(item => `
-              <div class="shopping-item ${item.checked ? 'checked' : ''}">
-                <input type="checkbox" ${item.checked ? 'checked' : ''} onchange="toggleShoppingItem('${escapeAttr(item.name)}')">
-                <label style="flex:1;cursor:pointer;">${escapeHtml(item.name)}</label>
-                <span class="item-meta">${item.amount ? item.amount.toFixed(1) : ''} ${item.unit}</span>
-                ${item.price ? `<span class="item-meta">${item.price.toFixed(2)} €</span>` : ''}
-                <span style="font-size:.7rem;color:var(--text-muted);max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
-                  ${item.fromRecipes.slice(0,2).join(', ')}${item.fromRecipes.length > 2 ? ` +${item.fromRecipes.length-2}` : ''}
-                </span>
-              </div>
-            `).join('')}
-          </div>
-        `).join('')}
-        ${totalCost > 0 ? `<div style="margin-top:12px;padding-top:10px;border-top:2px solid var(--border);font-weight:600;">💰 Geschätzter Gesamtpreis: ${totalCost.toFixed(2)} €</div>` : ''}
-      `}
-    </div>
-  `;
-}
-
-function toggleShoppingItem(name) {
-  if (!state.settings.checked) state.settings.checked = {};
-  state.settings.checked[name.toLowerCase()] = !state.settings.checked[name.toLowerCase()];
-  saveSettings();
-  render();
-}
-
-function clearChecked() {
-  const toRemove = Object.keys(state.settings.checked || {}).filter(k => state.settings.checked[k]);
-  toRemove.forEach(k => delete state.settings.checked[k]);
-  saveSettings();
-  render();
-  toast('✅ Erledigte Artikel entfernt');
-}
-
-function toggleAllChecked() {
-  const planMap = {};
-  state.plan.forEach(p => {
-    if (!planMap[p.date]) planMap[p.date] = [];
-    planMap[p.date].push(p.recipeId);
-  });
-  const allItems = new Set();
-  Object.values(planMap).forEach(recipeIds => {
-    recipeIds.forEach(recipeId => {
-      const recipe = state.recipes.find(r => r.id === recipeId);
-      if (recipe) {
-        recipe.ingredients.forEach(ing => allItems.add(ing.name.toLowerCase()));
+function computeShoppingList(start, end) {
+  const relevant = state.plan.filter(p => p.date >= start && p.date <= end);
+  const aggregated = {};
+  relevant.forEach(p => {
+    const recipe = state.recipes.find(r => r.id === p.recipeId);
+    if (!recipe) return;
+    const scale = (p.servingsOverride && recipe.servings) ? p.servingsOverride / recipe.servings : 1;
+    (recipe.ingredients || []).forEach(ing => {
+      const key = `${ing.name.trim().toLowerCase()}|${ing.unit||''}`;
+      const amount = (ing.amount || 0) * scale;
+      const price = (ing.price || 0) * scale;
+      if (!aggregated[key]) {
+        aggregated[key] = { name: ing.name.trim(), amount, unit: ing.unit||'', category: ing.category||'other', price, itemKey: key };
+      } else {
+        aggregated[key].amount += amount;
+        aggregated[key].price += price;
       }
     });
   });
-  if (allItems.size === 0) { toast('Keine Artikel in der Liste'); return; }
-  const allChecked = Array.from(allItems).every(name => state.settings.checked && state.settings.checked[name]);
-  if (!state.settings.checked) state.settings.checked = {};
-  allItems.forEach(name => { state.settings.checked[name] = !allChecked; });
+  const byCategory = {};
+  CATEGORIES.forEach(c => byCategory[c] = []);
+  Object.values(aggregated).forEach(item => {
+    item.checked = !!state.settings.checked[item.itemKey];
+    byCategory[item.category] = byCategory[item.category] || [];
+    byCategory[item.category].push(item);
+  });
+  Object.values(byCategory).forEach(list => list.sort((a,b) => a.name.localeCompare(b.name)));
+  return byCategory;
+}
+
+function renderShoppingView() {
+  if (!state.plannerWeekStart) state.plannerWeekStart = mondayOf(fmtISO(new Date()));
+  if (!state.shoppingStart) {
+    // Standard: dieselbe Woche, die gerade im Wochenplan angezeigt wird
+    state.shoppingStart = state.plannerWeekStart;
+    state.shoppingEnd = addDays(state.plannerWeekStart, 6);
+  }
+  const byCategory = computeShoppingList(state.shoppingStart, state.shoppingEnd);
+  const total = Object.values(byCategory).flat().reduce((s, i) => s + (i.price||0), 0);
+  const budget = state.settings.weeklyBudget;
+  const hasItems = Object.values(byCategory).some(l => l.length);
+
+  let banner = '';
+  if (budget) {
+    const over = total > budget;
+    banner = `<div class="budget-banner ${over?'budget-over':'budget-ok'}">Geschätzte Kosten: ${total.toFixed(2)}€ / Budget ${budget.toFixed(2)}€ ${over ? `— ⚠ ${(total-budget).toFixed(2)}€ über Budget` : `— noch ${(budget-total).toFixed(2)}€ übrig`}</div>`;
+  } else if (total > 0) {
+    banner = `<div class="budget-banner budget-neutral">Geschätzte Kosten: ${total.toFixed(2)}€ (kein Wochenbudget gesetzt)</div>`;
+  }
+
+  const order = state.settings.categoryOrder && state.settings.categoryOrder.length ? state.settings.categoryOrder : CATEGORIES;
+
+  return `
+    <div class="field-row">
+      <div class="field"><label>Von</label><input type="date" value="${state.shoppingStart}" onchange="state.shoppingStart=this.value; render();"></div>
+      <div class="field"><label>Bis</label><input type="date" value="${state.shoppingEnd}" onchange="state.shoppingEnd=this.value; render();"></div>
+    </div>
+    <div class="toolbar">
+      <button class="btn-secondary btn-small" onclick="resetChecked()">Abgehakte zurücksetzen</button>
+      <button class="btn-secondary btn-small" onclick="syncShoppingToPlannerWeek()">🔄 Wochenplan-Woche übernehmen</button>
+    </div>
+    ${banner}
+    ${!hasItems ? `<div class="empty-state">Keine geplanten Rezepte in diesem Zeitraum.</div>` : order.map(cat => {
+      const items = byCategory[cat] || [];
+      if (!items.length) return '';
+      return `
+        <h3 style="margin-top:16px;">${CATEGORY_LABELS[cat]||cat}</h3>
+        ${items.map(item => `
+          <div class="shopping-item ${item.checked?'checked':''}">
+            <input type="checkbox" ${item.checked?'checked':''} onchange="toggleChecked('${item.itemKey}', this.checked)">
+            <label>${escapeHtml(item.name)}
+              ${item.amount ? `<span class="item-meta">— ${trimNum(item.amount)} ${escapeHtml(item.unit)}</span>` : ''}
+              ${item.price ? `<span class="item-meta">· ~${item.price.toFixed(2)}€</span>` : ''}
+            </label>
+          </div>
+        `).join('')}
+      `;
+    }).join('')}
+  `;
+}
+function trimNum(n) { return Math.round(n*100)/100; }
+function toggleChecked(itemKey, checked) {
+  state.settings.checked[itemKey] = checked;
   saveSettings();
   render();
-  toast(allChecked ? '☑️ Alle abgehakt' : '☑️ Alle als erledigt markiert');
+}
+function resetChecked() {
+  state.settings.checked = {};
+  saveSettings();
+  render();
+}
+function syncShoppingToPlannerWeek() {
+  state.shoppingStart = state.plannerWeekStart || mondayOf(fmtISO(new Date()));
+  state.shoppingEnd = addDays(state.shoppingStart, 6);
+  render();
 }
 
 /* ---------------- Einstellungen ---------------- */
 
 function renderSettingsView() {
-  const s = state.settings;
+  const owned = new Set(state.settings.ownedAppliances || []);
+  const order = state.settings.categoryOrder && state.settings.categoryOrder.length ? state.settings.categoryOrder : CATEGORIES;
   return `
-    <h1>⚙️ Einstellungen</h1>
-
+    <h2>Meine Küchengeräte</h2>
+    <p class="item-meta">Für Warnungen im Wochenplan, wenn ein Rezept ein Gerät braucht, das du nicht hast.</p>
     <div class="card">
-      <h2>🤖 KI-Einstellungen</h2>
-      <div class="field">
-        <label>API-Provider</label>
-        <select id="provider-select" onchange="state.settings.provider=this.value; saveSettings();">
-          <option value="deepseek" ${s.provider === 'deepseek' ? 'selected' : ''}>DeepSeek (empfohlen)</option>
-          <option value="anthropic" ${s.provider === 'anthropic' ? 'selected' : ''}>Anthropic Claude</option>
+      <div class="equipment-grid">
+        ${allAppliances().map(a => `<label><input type="checkbox" class="settings-appliance" value="${escapeAttr(a)}" ${owned.has(a)?'checked':''}> ${escapeHtml(a)}</label>`).join('')}
+      </div>
+      <div class="field-row" style="align-items:end;">
+        <div class="field"><label>Eigenes Gerät hinzufügen</label><input type="text" id="new-appliance" placeholder="z.B. Sous-Vide"></div>
+      </div>
+      <button onclick="saveAppliances()">Geräte speichern</button>
+    </div>
+
+    <div class="divider">Wochenbudget</div>
+    <div class="card">
+      <div class="field" style="max-width:160px;"><label>Budget pro Woche (€)</label>
+        <input type="number" step="0.01" id="budget-input" value="${state.settings.weeklyBudget != null ? state.settings.weeklyBudget.toFixed(2) : ''}">
+      </div>
+      <button onclick="saveBudget()">Speichern</button>
+    </div>
+
+    <div class="divider">Supermarkt-Sortierung</div>
+    <p class="item-meta">Reihenfolge der Kategorien in der Einkaufsliste.</p>
+    <div class="card">
+      <div class="field" style="max-width:260px;">
+        <label>Stammsupermarkt</label>
+        <select id="supermarket-select" onchange="applySupermarketPreset(this.value)">
+          ${Object.entries(SUPERMARKET_PRESETS).map(([key, p]) =>
+            `<option value="${key}" ${state.settings.selectedSupermarket === key ? 'selected' : ''}>${p.label}</option>`
+          ).join('')}
         </select>
       </div>
-      <div class="field">
-        <label>API-Key</label>
-        <input type="password" id="api-key-input" value="${s.apiKey || ''}" placeholder="${s.provider === 'deepseek' ? 'sk-...' : 'sk-ant-...'}">
-        <button onclick="saveApiKey(document.getElementById('api-key-input').value);" style="margin-top:8px;">🔑 Speichern</button>
-        <div style="font-size:0.8rem;color:var(--text-muted);margin-top:4px;">
-          ${s.provider === 'deepseek' ? '🔑 Erhalte deinen Key auf <a href="https://platform.deepseek.com/api_keys" target="_blank">platform.deepseek.com</a>' : '🔑 Erhalte deinen Key auf <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a>'}
-        </div>
+      <p class="item-meta" style="margin-top:-4px;">Setzt eine typische Startreihenfolge — ist nur eine grobe Annäherung, danach unten per ▲/▼ an deine Filiale anpassen.</p>
+      <div class="field" style="max-width:220px;">
+        <label>Eigener Name/Notiz (optional)</label>
+        <input type="text" id="supermarket-name" value="${escapeAttr(state.settings.supermarketName||'')}">
       </div>
-      <div class="field-row">
-        <div class="field">
-          <label>Max. Tokens</label>
-          <input type="number" id="max-tokens" value="${s.maxTokens || 4096}" min="1024" max="8192" onchange="state.settings.maxTokens=parseInt(this.value); saveSettings();">
-        </div>
-        <div class="field">
-          <label>Temperatur (0-1)</label>
-          <input type="number" id="temperature" value="${s.temperature || 0.7}" step="0.1" min="0" max="1" onchange="state.settings.temperature=parseFloat(this.value); saveSettings();">
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2>💰 Budget</h2>
-      <div class="field">
-        <label>Wöchentliches Budget (€)</label>
-        <input type="number" id="weekly-budget" step="5" value="${s.weeklyBudget || ''}" onchange="state.settings.weeklyBudget=this.value ? parseFloat(this.value) : null; saveSettings(); render();">
-      </div>
-    </div>
-
-    <div class="card">
-      <h2>🏷️ Kategorien-Reihenfolge</h2>
-      <p style="font-size:.85rem;color:var(--text-muted);margin-bottom:8px;">Ziehe die Kategorien per Drag & Drop in die gewünschte Reihenfolge für die Einkaufsliste.</p>
-      <div id="category-sort" style="display:flex;flex-wrap:wrap;gap:6px;">
-        ${(s.categoryOrder || CATEGORIES).map(c => `
-          <span draggable="true" data-category="${c}" 
-                style="background:var(--primary-tint);padding:6px 12px;border-radius:999px;cursor:grab;font-size:.85rem;touch-action:none;"
-                ondragstart="dragStart(event)" ondragover="dragOver(event)" ondrop="dropCategory(event)">
-            ${CATEGORY_LABELS[c] || c}
-          </span>
+      <ul class="order-list" id="order-list">
+        ${order.map(cat => `
+          <li data-cat="${cat}">
+            <span>${CATEGORY_LABELS[cat]||cat}</span>
+            <span>
+              <button type="button" class="btn-secondary btn-small" onclick="moveOrder('${cat}',-1)">▲</button>
+              <button type="button" class="btn-secondary btn-small" onclick="moveOrder('${cat}',1)">▼</button>
+            </span>
+          </li>
         `).join('')}
-      </div>
+      </ul>
+      <button onclick="saveOrder()" style="margin-top:8px;">Sortierung speichern</button>
     </div>
 
+    <div class="divider">DeepSeek API-Key</div>
+    <p class="item-meta">Für KI-Vorschlag (Wochenplan), Preisschätzung und KI-Rezepte. Key erstellen unter
+      <a href="https://platform.deepseek.com/api_keys" target="_blank" rel="noopener">platform.deepseek.com/api_keys</a>.
+      Der Key bleibt nur lokal in diesem Browser gespeichert (localStorage) — er wird nirgends hochgeladen.</p>
+    <p class="item-meta" style="color:var(--warn);">⚠ Hinweis: DeepSeek hat (anders als Anthropic) keinen offiziell
+      dokumentierten Support für direkte Browser-Aufrufe. Falls die KI-Buttons mit einem Fehler wie "Failed to fetch"
+      oder einer CORS-Meldung in der Browser-Konsole scheitern, liegt das daran — dann bräuchte es einen kleinen
+      zwischengeschalteten Server, sag in dem Fall Bescheid.</p>
     <div class="card">
-      <h2>🔧 Küchengeräte</h2>
-      <div class="field">
-        <label>Eigene Geräte (Komma-getrennt)</label>
-        <input type="text" id="custom-appliances" value="${(s.customAppliances || []).join(', ')}" placeholder="z.B. Heißluftfritteuse, Reiskocher">
-        <button onclick="saveAppliances()" style="margin-top:6px;">💾 Geräte speichern</button>
+      <p>Status:
+        <span class="status-pill ${hasApiKey() ? 'set' : 'unset'}">${hasApiKey() ? '✓ gesetzt' : 'nicht gesetzt'}</span>
+      </p>
+      <div class="field-row" style="align-items:end;">
+        <div class="field"><label>API-Key</label><input type="password" id="api-key-input" placeholder="sk-..." value="${hasApiKey() ? '••••••••••••••••' : ''}"></div>
       </div>
-    </div>
-
-    <div class="card">
-      <h2>🏪 Supermarkt</h2>
-      <div class="field">
-        <label>Stammsupermarkt für optimierte Einkaufsreihenfolge</label>
-        <select id="supermarket-select" onchange="state.settings.selectedSupermarket=this.value; state.settings.categoryOrder=SUPERMARKET_PRESETS[this.value]?.order || [...CATEGORIES]; saveSettings(); render();">
-          ${Object.entries(SUPERMARKET_PRESETS).map(([key, val]) => `
-            <option value="${key}" ${s.selectedSupermarket === key ? 'selected' : ''}>${val.label}</option>
-          `).join('')}
-        </select>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2>🗃️ Daten</h2>
-      <div class="toolbar">
-        <button class="btn-secondary" onclick="exportData()">📤 Exportieren</button>
-        <button class="btn-secondary" onclick="document.getElementById('import-file').click()">📥 Importieren</button>
-        <input type="file" id="import-file" accept=".json" style="display:none" onchange="importData(event)">
-        <button class="btn-danger" onclick="if(confirm('Alle Daten wirklich löschen?')){localStorage.clear(); location.reload();}">🗑️ Alle Daten löschen</button>
-      </div>
-      <div style="font-size:.78rem;color:var(--text-muted);margin-top:4px;">
-        ${state.recipes.length} Rezepte, ${state.plan.length} Plan-Einträge
-      </div>
+      <button onclick="saveApiKeyFromForm()">Speichern</button>
     </div>
   `;
 }
 
-let dragCategory = null;
-function dragStart(e) {
-  dragCategory = e.target.dataset.category;
-  e.dataTransfer.effectAllowed = 'move';
-}
-function dragOver(e) {
-  e.preventDefault();
-  e.dataTransfer.dropEffect = 'move';
-}
-function dropCategory(e) {
-  e.preventDefault();
-  const target = e.target.dataset.category;
-  if (!dragCategory || !target || dragCategory === target) return;
-  const order = state.settings.categoryOrder || [...CATEGORIES];
-  const fromIdx = order.indexOf(dragCategory);
-  const toIdx = order.indexOf(target);
-  if (fromIdx === -1 || toIdx === -1) return;
-  order.splice(toIdx, 0, order.splice(fromIdx, 1)[0]);
-  state.settings.categoryOrder = order;
-  saveSettings();
+function saveApiKeyFromForm() {
+  const raw = document.getElementById('api-key-input').value;
+  if (raw === '••••••••••••••••') { toast('Key unverändert.'); return; } // Maskierter Platzhalter, nicht überschrieben
+  if (!raw.trim()) { toast('Bitte einen Key eingeben.'); return; }
+  setApiKey(raw);
+  toast('API-Key gespeichert.');
   render();
-}
-
-function saveApiKey(key) {
-  state.settings.apiKey = key;
-  saveSettings();
-  toast('✅ API-Key gespeichert');
 }
 
 function saveAppliances() {
-  const input = document.getElementById('custom-appliances');
-  const items = input.value.split(',').map(s => s.trim()).filter(Boolean);
-  state.settings.customAppliances = items;
-  saveSettings();
-  toast('✅ Geräte gespeichert');
-  render();
-}
-
-function exportData() {
-  const data = {
-    recipes: state.recipes,
-    plan: state.plan,
-    settings: state.settings,
-    exportDate: new Date().toISOString()
-  };
-  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = `herbi-data-${fmtISO(new Date())}.json`;
-  a.click();
-  URL.revokeObjectURL(url);
-  toast('📤 Daten exportiert');
-}
-
-function importData(event) {
-  const file = event.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    try {
-      const data = JSON.parse(e.target.result);
-      if (data.recipes) state.recipes = data.recipes;
-      if (data.plan) state.plan = data.plan;
-      if (data.settings) state.settings = Object.assign(state.settings, data.settings);
-      saveRecipes();
-      savePlan();
-      saveSettings();
-      render();
-      toast('✅ Daten importiert!');
-    } catch (err) {
-      toast('❌ Fehler beim Import: ' + err.message);
+  const selected = Array.from(document.querySelectorAll('.settings-appliance:checked')).map(el => el.value);
+  const newAppliance = document.getElementById('new-appliance').value.trim();
+  if (newAppliance) {
+    if (!state.settings.customAppliances) state.settings.customAppliances = [];
+    if (!state.settings.customAppliances.includes(newAppliance) && !DEFAULT_APPLIANCES.includes(newAppliance)) {
+      state.settings.customAppliances.push(newAppliance);
     }
-  };
-  reader.readAsText(file);
-  event.target.value = '';
-}
-
-/* ---------------- App-Start ---------------- */
-
-async function init() {
-  await loadState();
-  if (!state.plannerWeekStart) state.plannerWeekStart = mondayOf(getTodayISO());
+    selected.push(newAppliance);
+  }
+  state.settings.ownedAppliances = selected;
+  saveSettings();
+  toast('Küchengeräte gespeichert.');
   render();
 }
+function saveBudget() {
+  const raw = document.getElementById('budget-input').value.trim();
+  state.settings.weeklyBudget = raw ? parseFloat(raw) : null;
+  saveSettings();
+  toast(raw ? `Budget auf ${parseFloat(raw).toFixed(2)}€ gesetzt.` : 'Budget entfernt.');
+  render();
+}
+function applySupermarketPreset(key) {
+  state.settings.selectedSupermarket = key;
+  const preset = SUPERMARKET_PRESETS[key];
+  if (preset && preset.order) {
+    state.settings.categoryOrder = [...preset.order];
+  }
+  render();
+}
+function moveOrder(cat, dir) {
+  const order = state.settings.categoryOrder && state.settings.categoryOrder.length ? [...state.settings.categoryOrder] : [...CATEGORIES];
+  const i = order.indexOf(cat);
+  const j = i + dir;
+  if (j < 0 || j >= order.length) return;
+  [order[i], order[j]] = [order[j], order[i]];
+  state.settings.categoryOrder = order;
+  render();
+}
+function saveOrder() {
+  state.settings.supermarketName = document.getElementById('supermarket-name').value.trim();
+  saveSettings();
+  toast('Sortierung gespeichert.');
+}
 
-init().catch(console.error);
+/* ---------------- Utilities ---------------- */
+
+function escapeHtml(str) {
+  return String(str).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function escapeAttr(str) { return escapeHtml(str); }
+
+/* ---------------- Init ---------------- */
+
+(async function init() {
+  document.getElementById('app').innerHTML = `<div class="empty-state">Lädt…</div>`;
+  await loadState();
+  if (!state.plannerWeekStart) state.plannerWeekStart = mondayOf(fmtISO(new Date()));
+  render();
+})();
 </script>
 </body>
 </html>
